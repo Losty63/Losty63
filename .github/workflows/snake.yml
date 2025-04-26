@@ -1,28 +1,28 @@
-name: Generate Snake Animation
+name: Snake
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # Gera a snake todo dia
   push:
     branches:
-      - main
-  workflow_dispatch:
-
+      - main  # A ação será executada quando houver um push para a branch 'main'
+  schedule:
+    - cron: "0 0 * * *"  # Executa a cada dia à meia-noite (UTC)
+    
 jobs:
-  generate:
-    runs-on: ubuntu-latest
+  update-snake:
+    runs-on: ubuntu-latest  # A ação será executada no Ubuntu (sistema operacional)
+    
     steps:
-      - uses: Platane/snk@master
-        id: snake-gif
-        with:
-          github_user_name: Losty63
-          outputs: |
-            ./output/github-contribution-grid-snake.svg
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Faz o checkout do repositório para pegar as últimas alterações
 
-      - name: Commit e Push
-        uses: EndBug/add-and-commit@v9
-        with: 
-          author_name: github-actions
-          author_email: github-actions@github.com
-          message: "Atualizando Snake animation"
-          add: "output/github-contribution-grid-snake.svg"
+      - name: Update GitHub contribution snake
+        uses: Platane/snk@v2  # Usando a ação do Platane para gerar a animação do Snake
+        with:
+          github_user: 'seu-usuario-github'  # Substitua pelo seu nome de usuário no GitHub
+          gif_out: './snake.gif'  # O arquivo GIF será gerado na raiz do repositório
+
+      - name: Upload Snake GIF to GitHub
+        uses: actions/upload-artifact@v2  # Faz o upload do arquivo GIF para o repositório
+        with:
+          name: snake-gif
+          path: ./snake.gif
