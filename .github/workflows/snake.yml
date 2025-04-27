@@ -27,3 +27,12 @@ jobs:
         with:
           name: snake-gif
           path: ./snake.gif
+          
+          
+      - name: Commit e Push
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions
+          author_email: github-actions@github.com
+          message: "Atualizando Snake animation"
+          add: "output/github-contribution-grid-snake.svg"
