@@ -49,6 +49,11 @@
   <img src="https://github.com/Losty63/Losty63/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </div>
 
+## Snake dos meus commits
+
+![Snake animation](https://github.com/Losty63/Losty63/output/github-contribution-grid-snake.svg)
+
+
 ---
 
 > "Devagar e sempre, cada linha de código é um passo a mais no meu caminho!" 🚀
